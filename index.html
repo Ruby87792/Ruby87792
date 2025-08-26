@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>专业前端开发大师课 - 掌握现代Web开发技术</title>
+    <title>PS大师之路 - 专业美工教程，助力职场就业</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,8 +14,17 @@
             font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
         }
 
+        :root {
+            --primary: #3498db;
+            --secondary: #ff7f50;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #28a745;
+        }
+
         body {
-            background-color: #f8f9fa;
+            background-color: #f9f9f9;
             color: #333;
             line-height: 1.6;
         }
@@ -25,379 +35,666 @@
             padding: 0 20px;
         }
 
+        /* 导航栏样式 */
         header {
-            background: linear-gradient(135deg, #246BFD 0%, #5089FF 100%);
-            color: white;
-            padding: 20px 0;
+            background: #fff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .header-content {
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 0;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
+            display: flex;
+            align-items: center;
         }
 
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* 英雄区域样式 */
         .hero {
-            padding: 60px 0;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&h=800&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
             text-align: center;
-            background: white;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 20px;
-            color: #246BFD;
+            line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 800px;
-            margin: 0 auto 30px;
-            color: #666;
+            margin: 0 auto 40px;
         }
 
-        .price-tag {
-            background: linear-gradient(135deg, #246BFD 0%, #5089FF 100%);
-            color: white;
+        .btn {
             display: inline-block;
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .original-price {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 1.2rem;
-            margin-left: 10px;
-        }
-
-        .btn-primary {
-            background: #FF6B6B;
+            background: var(--secondary);
             color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
             font-weight: bold;
+            transition: all 0.3s;
+            border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            font-size: 1.1rem;
         }
 
-        .btn-primary:hover {
-            background: #ff5252;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: #ff6b3b;
         }
 
-        .course-details {
-            padding: 60px 0;
-            background: #f8f9fa;
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* 特色区域 */
+        .features {
+            padding: 80px 0;
+            background: white;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 40px;
-            color: #246BFD;
-            font-size: 2rem;
+            margin-bottom: 60px;
         }
 
-        .features {
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 50px;
         }
 
         .feature-card {
-            background: white;
-            padding: 30px;
+            background: var(--light);
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .feature-icon {
-            font-size: 2.5rem;
-            color: #246BFD;
+            font-size: 50px;
+            color: var(--primary);
             margin-bottom: 20px;
         }
 
-        .instructor {
-            background: white;
-            padding: 60px 0;
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
         }
 
-        .instructor-profile {
-            display: flex;
-            align-items: center;
-            max-width: 800px;
-            margin: 0 auto;
-            gap: 40px;
+        /* 课程展示 */
+        .courses {
+            padding: 80px 0;
+            background: #f0f5f9;
         }
 
-        .instructor-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .testimonials {
-            padding: 60px 0;
-            background: #f8f9fa;
-        }
-
-        .testimonial-cards {
+        .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .testimonial-card {
+        .course-card {
             background: white;
-            padding: 30px;
             border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .course-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .course-card:hover .course-image img {
+            transform: scale(1.1);
+        }
+
+        .course-content {
+            padding: 20px;
+        }
+
+        .course-content h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .course-info {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            color: var(--gray);
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        /* 就业成功案例 */
+        .success-stories {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .stories-container {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        .story-card {
+            flex: 0 0 350px;
+            background: var(--light);
+            border-radius: 10px;
+            padding: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
-        .testimonial-text {
+        .story-card .quote {
+            font-size: 50px;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .story-content {
+            margin-bottom: 20px;
             font-style: italic;
-            margin-bottom: 20px;
         }
 
-        .testimonial-author {
-            font-weight: bold;
-            color: #246BFD;
+        .student-info {
+            display: flex;
+            align-items: center;
         }
 
-        .faq {
-            padding: 60px 0;
-            background: white;
+        .student-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
         }
 
-        .faq-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
+        .student-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .faq-question {
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            color: #246BFD;
-        }
-
-        .purchase-section {
-            text-align: center;
-            padding: 60px 0;
-            background: linear-gradient(135deg, #246BFD 0%, #5089FF 100%);
+        /* 就业保障 */
+        .guarantee {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, #2c3e50 100%);
             color: white;
+            text-align: center;
         }
 
+        .guarantee-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .guarantee-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .guarantee-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .guarantee-point {
+            padding: 20px;
+        }
+
+        .guarantee-point i {
+            font-size: 40px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* 页脚 */
         footer {
-            background: #333;
+            background: var(--dark);
             color: white;
-            padding: 30px 0;
-            text-align: center;
+            padding: 50px 0 20px;
         }
 
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式设计 */
         @media (max-width: 768px) {
-            .instructor-profile {
+            .navbar {
                 flex-direction: column;
-                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 10px 15px;
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
-            .hero p {
-                font-size: 1rem;
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn-outline {
+                margin-left: 0;
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- 导航栏 -->
     <header>
-        <div class="container header-content">
-            <div class="logo">CodeMaster在线教育</div>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <div class="logo-text">PS<span>大师之路</span></div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#courses">课程介绍</a></li>
+                        <li><a href="#stories">成功案例</a></li>
+                        <li><a href="#guarantee">就业保障</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <section class="hero">
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
         <div class="container">
-            <h1>前端开发大师课：从零到专业</h1>
-            <p>通过本课程，您将掌握现代前端开发的所有核心技能，包括HTML5、CSS3、JavaScript、React和Vue等流行框架，构建响应式、高性能的网站和应用。</p>
-            <div>
-                <span class="price-tag">¥399</span>
-                <span class="original-price">¥899</span>
+            <h1>掌握PS技能，开启设计职业生涯</h1>
+            <p>专业Photoshop美工教程，从零基础到就业水平，90%的学员在完成课程后6个月内找到相关工作</p>
+            <div class="btn-container">
+                <a href="#courses" class="btn">查看课程</a>
+                <a href="#guarantee" class="btn btn-outline">就业保障</a>
             </div>
-            <button class="btn-primary" id="purchase-btn">立即购买</button>
         </div>
     </section>
 
-    <section class="course-details">
+    <!-- 特色区域 -->
+    <section class="features">
         <div class="container">
-            <h2 class="section-title">课程特色</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>12个核心模块</h3>
-                    <p>从基础到高级，系统学习前端开发知识体系</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎥</div>
-                    <h3>80+小时高清视频</h3>
-                    <p>随时随地学习，永久可重复观看</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💻</div>
-                    <h3>实战项目</h3>
-                    <p>通过5个真实项目巩固所学知识</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👨‍🏫</div>
-                    <h3>一对一辅导</h3>
-                    <p>专业讲师提供学习指导和代码审查</p>
-                </div>
+            <div class="section-title">
+                <h2>为什么选择我们的PS课程？</h2>
+                <p>专注于就业技能培养，帮助学员快速进入设计行业</p>
             </div>
-
-            <h2 class="section-title">课程大纲</h2>
-            <div class="features">
+            <div class="features-grid">
                 <div class="feature-card">
-                    <h3>HTML5与语义化标签</h3>
-                    <p>现代HTML5特性与最佳实践</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>就业导向课程</h3>
+                    <p>课程内容根据市场需求设计，重点培养就业所需技能</p>
                 </div>
                 <div class="feature-card">
-                    <h3>CSS3与响应式设计</h3>
-                    <p>Flexbox、Grid和媒体查询</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>实战项目训练</h3>
+                    <p>通过真实商业项目练习，积累工作经验</p>
                 </div>
                 <div class="feature-card">
-                    <h3>JavaScript高级概念</h3>
-                    <p>ES6+特性、异步编程和DOM操作</p>
-                </div>
-                <div class="feature-card">
-                    <h3>React框架深入</h3>
-                    <p>组件、Hooks和状态管理</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Vue.js实战应用</h3>
-                    <p>Vue3组合式API和生态系统</p>
-                </div>
-                <div class="feature-card">
-                    <h3>性能优化与部署</h3>
-                    <p>提升网站速度和部署最佳实践</p>
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>资深设计师指导</h3>
+                    <p>行业资深设计师一对一指导，提供专业反馈</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="instructor">
+    <!-- 课程展示 -->
+    <section class="courses" id="courses">
         <div class="container">
-            <h2 class="section-title">讲师介绍</h2>
-            <div class="instructor-profile">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
-                    alt="讲师照片" class="instructor-img">
-                <div>
-                    <h3>张明教授</h3>
-                    <p>前端开发专家，拥有10年以上行业经验。曾任职于多家知名互联网公司，担任高级前端工程师和技术主管。擅长JavaScript框架和性能优化，著有《现代前端开发实战》一书。张老师以深入浅出的教学风格著称，已帮助5000+学员成功进入前端开发领域。
-                    </p>
+            <div class="section-title">
+                <h2>精选PS美工课程</h2>
+                <p>从基础到进阶，满足不同层次学习需求</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80"
+                            alt="PS基础入门课程">
+                    </div>
+                    <div class="course-content">
+                        <h3>PS基础入门课程</h3>
+                        <p>零基础快速掌握Photoshop核心功能</p>
+                        <div class="course-info">
+                            <span><i class="far fa-clock"></i> 30课时</span>
+                            <span><i class="far fa-user"></i> 初学者</span>
+                        </div>
+                        <div class="price">¥299</div>
+                        <a href="#" class="btn">立即购买</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80"
+                            alt="UI设计实战课程">
+                    </div>
+                    <div class="course-content">
+                        <h3>UI设计实战课程</h3>
+                        <p>移动端与网页UI设计全流程实战</p>
+                        <div class="course-info">
+                            <span><i class="far fa-clock"></i> 45课时</span>
+                            <span><i class="far fa-user"></i> 中级</span>
+                        </div>
+                        <div class="price">¥499</div>
+                        <a href="#" class="btn">立即购买</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80"
+                            alt="高级合成与特效">
+                    </div>
+                    <div class="course-content">
+                        <h3>高级合成与特效</h3>
+                        <p>专业级图像合成与视觉特效技术</p>
+                        <div class="course-info">
+                            <span><i class="far fa-clock"></i> 60课时</span>
+                            <span><i class="far fa-user"></i> 高级</span>
+                        </div>
+                        <div class="price">¥799</div>
+                        <a href="#" class="btn">立即购买</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="testimonials">
+    <!-- 就业成功案例 -->
+    <section class="success-stories" id="stories">
         <div class="container">
-            <h2 class="section-title">学员评价</h2>
-            <div class="testimonial-cards">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"这门课程改变了我对前端开发的认知，项目实战部分尤其有用，让我在求职时有了实实在在的作品展示。"</p>
-                    <p class="testimonial-author">— 李同学，前端工程师</p>
+            <div class="section-title">
+                <h2>学员就业成功故事</h2>
+                <p>听听我们的学员如何通过PS技能改变职业生涯</p>
+            </div>
+            <div class="stories-container">
+                <div class="story-card">
+                    <div class="quote">"</div>
+                    <p class="story-content">从零开始学习PS，4个月后成功入职一家电商公司担任美工设计师，薪资比之前提高了40%。</p>
+                    <div class="student-info">
+                        <div class="student-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="学员头像">
+                        </div>
+                        <div>
+                            <h4>张婷婷</h4>
+                            <p>电商美工设计师</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"讲师讲解非常清晰，课程结构合理。从零基础到现在能独立开发项目，只用了4个月时间，非常值得！"</p>
-                    <p class="testimonial-author">— 王同学，自由职业者</p>
+                <div class="story-card">
+                    <div class="quote">"</div>
+                    <p class="story-content">课程中的实战项目让我积累了作品集，面试时直接展示了我的能力，顺利拿到了心仪的offer。</p>
+                    <div class="student-info">
+                        <div class="student-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="学员头像">
+                        </div>
+                        <div>
+                            <h4>李明明</h4>
+                            <p>UI设计师</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"课程内容更新及时，涵盖了最新的前端技术。一对一辅导帮助我解决了很多实际开发中的问题。"</p>
-                    <p class="testimonial-author">— 赵同学，全栈开发学员</p>
+                <div class="story-card">
+                    <div class="quote">"</div>
+                    <p class="story-content">老师不仅教技术，还指导我们如何应对面试和职场挑战，这对我的职业发展帮助很大。</p>
+                    <div class="student-info">
+                        <div class="student-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="学员头像">
+                        </div>
+                        <div>
+                            <h4>王小红</h4>
+                            <p>平面设计师</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="faq">
+    <!-- 就业保障 -->
+    <section class="guarantee" id="guarantee">
         <div class="container">
-            <h2 class="section-title">常见问题</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">课程有效期是多久？</div>
-                    <p>购买后课程永久有效，可以随时观看和复习。</p>
+            <div class="guarantee-content">
+                <h2>就业保障计划</h2>
+                <p>我们承诺，完成课程并达到要求的学员，6个月内未找到相关工作可免费重修</p>
+
+                <div class="guarantee-points">
+                    <div class="guarantee-point">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>简历优化</h3>
+                        <p>专业HR指导简历制作，突出设计技能</p>
+                    </div>
+                    <div class="guarantee-point">
+                        <i class="fas fa-project-diagram"></i>
+                        <h3>作品集指导</h3>
+                        <p>打造专业作品集，展示你的设计能力</p>
+                    </div>
+                    <div class="guarantee-point">
+                        <i class="fas fa-handshake"></i>
+                        <h3>就业推荐</h3>
+                        <p>合作企业优先推荐，直达面试环节</p>
+                    </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">需要什么基础？</div>
-                    <p>课程从零开始讲解，不需要任何前置知识。但基本的计算机操作能力会有所帮助。</p>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">是否有证书？</div>
-                    <p>完成所有课程和项目后，将获得CodeMaster颁发的结业证书。</p>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">如何获得辅导支持？</div>
-                    <p>课程专属社群提供讲师和助教答疑，每周还有直播答疑环节。</p>
-                </div>
+
+                <a href="#contact" class="btn">咨询就业保障详情</a>
             </div>
         </div>
     </section>
 
-    <section class="purchase-section">
+    <!-- 页脚 -->
+    <footer id="contact">
         <div class="container">
-            <h2>立即开始您的前端开发之旅</h2>
-            <p>限时优惠，立即加入超过5000名学员的学习行列</p>
-            <div style="margin: 30px 0;">
-                <span style="font-size: 2rem; font-weight: bold;">¥399</span>
-                <span style="text-decoration: line-through; margin-left: 10px;">¥899</span>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于我们</h3>
+                    <ul>
+                        <li><a href="#">公司简介</a></li>
+                        <li><a href="#">教学团队</a></li>
+                        <li><a href="#">合作企业</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>学习资源</h3>
+                    <ul>
+                        <li><a href="#">免费教程</a></li>
+                        <li><a href="#">设计素材</a></li>
+                        <li><a href="#">博客文章</a></li>
+                        <li><a href="#">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 400-123-4567</li>
+                        <li><i class="fas fa-envelope"></i> support@psmaster.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 北京市朝阳区创意广场A座</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-qq"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
             </div>
-            <button class="btn-primary" id="footer-purchase-btn">立即购买</button>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>© 2023 CodeMaster在线教育 | 提供专业IT技能培训</p>
-            <p>联系我们: customer@codemaster.com | 400-123-4567</p>
+            <div class="copyright">
+                <p>© 2023 PS大师之路 版权所有 | 京ICP备123456号-1</p>
+            </div>
         </div>
     </footer>
-
-    <script>
-        // 简单的购买按钮交互
-        document.getElementById('purchase-btn').addEventListener('click', function () {
-            alert('感谢您的购买！支付功能正在接入中。');
-        });
-
-        document.getElementById('footer-purchase-btn').addEventListener('click', function () {
-            alert('感谢您的购买！支付功能正在接入中。');
-        });
-    </script>
 </body>
 
 </html>
